@@ -1,0 +1,227 @@
+<%- include ('partials/navbar_user') %>
+<%- include ('partials/sidebar') %>
+<%- include ('partials/navbar_userstyles') %>
+
+
+
+            <div class="col-md-10 rightdiv">
+
+                <div class="row row-cols-2 row-cols-md-3 g-4">
+                    <div class="col">
+                      <div class="card ">
+                        <a href="/current/<%= id %>/show_genre"><img src="/images/Im yours.jpg" class="card-img-top" alt="generes"></a>
+                        <div class="card-body">
+                          <h5 class="card-title">Genres</h5>
+                          <p class="card-text">Look though our rich library for your favourite genres of music !</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <a href="/current/<%= id %>/show_artists"><img src="/images/Someone you loved.jpg" class="card-img-top" alt="Artists"></a>
+                        <div class="card-body">
+                          <h5 class="card-title">Artists</h5>
+                          <p class="card-text">From Ed Sheeran to John Mayer, we have it all !</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <a href="/current/<%= id %>/all_songs"/current/<%= id %>/all_songs><img src="/images/Sad Song.jpg" class="card-img-top" alt="All Songs"></a>
+                        <div class="card-body">
+                          <h5 class="card-title">All Songs</h5>
+                          <p class="card-text">Here are all the songs in the library for you to browse</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <a href="/current/<%= id %>/anything"><img src="/images/Thinking out loud.jpg" class="card-img-top" alt="Random"></a>
+                        <div class="card-body">
+                          <h5 class="card-title">Anything! Surprise Me ?!</h5>
+                          <p class="card-text">Dont have any particular preference and just want to chill, we got you covered as well !</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col typechk" id="adminfunctions">
+                      <div class="card">
+                       <img src="/images/Saturn.jpg" class="card-img-top" alt="admin">
+                        <div class="card-body">
+                          <h5 class="card-title">This is for admin functions</h5>
+                          <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addsongmodal">Add a song</button>
+                          <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editsongmodal">Edit existing song</button>
+                          <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#deletesongmodal">Delete a song</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <br>
+
+                <hr class = "pagediv">
+
+                <br>
+
+                <h4>Listed above were some classic picks, Hope you liked them !</h4>
+                <br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+<!-- Modal for adding a new song -->
+<div class="modal fade" id="addsongmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a new Song!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/current/<%= id %>">
+         <input type="text" class="form-control" id="name_of_song" name="name_of_song" placeholder="Enter the name of the song" aria-label="name of song">
+         <input type="text" class="form-control" id="genre_of_song" name="genre_of_song" placeholder="Enter the genres,  eg: pop,rock,metal etc." aria-label="genre of song">
+         <input type="text" class="form-control" id="artist" name="artist" placeholder="Enter the Artist's Name" aria-label="Artist">
+         <input type="text" class="form-control" id="year" name="year" placeholder="Enter the songs release year" aria-label="Year">
+         <input type="file" class="form-control" id="file" name="file" placeholder="Enter the songs release year" aria-label="file">
+
+         <hr>
+         <input type="submit" class="form-control btn btn-outline-dark" id="submit" value="Add Song" aria-label="submit-button">
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal for deleting an existing song-->
+<div class="modal fade" id="deletesongmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Song Modal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+      <form method="POST" action="/current/<%= id %>">
+        <label for="genre">Select the song you want to delete</label>
+        <select name="chosen_song" class="form-select" aria-label="Default select example">
+          <option selected>Choose here</option>
+          <% resul.forEach(function(val){ %>
+           <option value="<%= val._id %>"><%= val.title %></option>
+           <% }); %>
+
+        </select>
+        <hr>
+       <input type="submit" class="btn btn-outline-dark" value="Delete!">
+      </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal for editing an existing song-->
+<div class="modal fade" id="editsongmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" >
+      <h5>Edit Song</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body">
+
+
+      <form method="POST" action="./<%= id %>/edit/title">
+
+            <label for="genre">Select the song you want to delete</label>
+        <select  name="edit_song" class="form-select" aria-label="Default select example">
+          <option selected>Choose here</option>
+          <% resul.forEach(function(val){ %>
+           <option value="<%= val._id %>" ><%= val.title %></option>
+           <% }); %>
+
+        </select>
+
+         <input type="text" class="form-control" id="name_of_song" name="name_of_song" placeholder="Enter the name of the song" aria-label="name of song">
+         <input type="text" class="form-control" id="genre_of_song" name="genre_of_song" placeholder="Enter the genres,  eg: pop,rock,metal etc." aria-label="genre of song">
+         <input type="text" class="form-control" id="artist" name="artist" placeholder="Enter the Artist's Name" aria-label="Artist">
+         <input type="text" class="form-control" id="year" name="year" placeholder="Enter the songs release year" aria-label="Year">
+         <input type="file" class="form-control" id="file" name="file" placeholder="Enter the songs release year" aria-label="file">
+
+         <hr>
+         <input type="submit" class="form-control btn btn-outline-dark" id="submit" value="Save Changes!" aria-label="submit-button">
+
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

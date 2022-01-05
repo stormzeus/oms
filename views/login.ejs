@@ -1,0 +1,36 @@
+<%- include ('partials/header') %>
+<%- include ('partials/loginstyle') %>
+
+
+<div class="container">
+<h1>Login</h1>
+<form action="/users/login" method="POST">
+
+<div class="form-group">
+    <input type="text" name="username" class="form-control" placeholder="username">
+</div>
+ <div class="form-group">
+    <input type="password" name="password" class="form-control" placeholder="password">
+</div>
+
+
+<div class="form-group">
+    <button type="submit" class="btn btn-info">Login</button>
+</div>
+</form>
+
+<a href="/users/register">Dont have an account?</a>
+<a href="/">Cancel</a>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<%- include ('partials/footer') %>

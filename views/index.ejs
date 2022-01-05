@@ -1,0 +1,67 @@
+<%- include ('partials/navbar') %>
+<%- include ('partials/navstyle') %>
+
+
+
+
+
+
+
+
+
+<div class="jumbotron">
+  <h1 class="display-6">MUSIC LIST</h1>
+  <p class="lead">This is the list of most popular songs</p>
+  <a class="btn btn-primary btn-lg" href="/music/new" role="button">
+  Add new song</a>
+
+
+
+  <form action="/music/search" method="GET" class="form-inline">
+	  <div class="form-group">
+	    <input type="text" name="search" id="search" placeholder="search" class="form-control">
+	    <input type="submit" value="search" class="btn btn-primary">
+		</div>
+
+		<label for="category">Choose a genre:</label>
+    <select name="category" id="category">
+    	<option value="All">All</option>
+      <option value="Action">Action</option>
+      <option value="Animation">Animation</option>
+      <option value="SciFi">SciFi</option>
+      <option value="Fantasy">Fantasy</option>
+      <option value="Drama">Drama</option>
+		</select>
+	</form>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+<div class="container">
+
+
+<div class="row">
+<% results.forEach(function(song){ %>
+	<div class="sm-col-3">
+		<img src="/images/<%= song.image %>" style="width:200px; height:200px;" class="img-thumbnail"/>
+		<div class="caption"><a href="/music/<%= song._id %>"><%= song.title %></a></div>
+	</div>
+
+
+<% }); %>
+
+</div>
+</div>
+
+
+
+<%- include ('partials/footer') %>

@@ -1,0 +1,28 @@
+<%- include ('partials/header') %>
+
+
+<div class="container">
+<h1> Movie Details </h1>
+
+<p><img src="/images/<%= music.image %>" /></p>
+<p>Title: <%= music.title %></p>
+<p>Genre: <%= music.genre %></p>
+<p>Description: <%= music.description %></p>
+
+
+<a class="btn btn-warning" href="/music/<%= music._id %>/edit" role="button">
+Edit music</a>
+
+
+<form action="/music/<%= music._id %>?_method=DELETE" method="POST">
+
+<button type="submit" class="btn btn-danger">Delete music</button>
+
+</form>
+
+<p>
+<a href="/">Back to List</a>
+</p>
+
+</div>
+<%- include ('partials/footer') %>

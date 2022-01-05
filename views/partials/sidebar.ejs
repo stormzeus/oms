@@ -1,0 +1,33 @@
+
+
+ <div class="container-fluid">
+        <div class="row">
+
+            <!-- This is for the left menu, this can also be made into a partial -->
+            <div class="col-md-2 leftdiv">
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <h4>Your Space!</h4>
+                        </li>
+                        <br><br>
+                        <div id=<%= type %> class="typechk">
+                         <a href="/current/<%= id %>/admin_functions"><li class="list-group-item" >Admin Functions</li></a>
+                         </div>
+
+                        <hr>
+                        <a href="/current/<%= id %>/liked_songs_page"><li class="list-group-item">Liked Songs</li></a>
+                    </ul>
+                </div>
+
+                <Br>
+                <h4>Playlists</h4>
+                <hr>
+                <ul class="list-group list-group-flush">
+                <% playlist_names.forEach(function(val){ %>
+                    <a href="/current/<%= id %>/playlists/<%= val %>"><li class="list-group-item"><%= val %></li></a>
+                    <button type="button" class="btn btn-outline-dark float-right" onclick="removeplaylist('<%= val %>','<%= id %>')"><i class="fas fa-trash-alt"></i></button>
+                    <% }); %>
+                </ul>
+            </div>
+

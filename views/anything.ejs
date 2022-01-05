@@ -1,0 +1,66 @@
+<%- include ('partials/navbar_user') %>
+<%- include ('partials/sidebar') %>
+<%- include ('partials/anything_style') %>
+<%- include ('partials/navbar_userstyles') %>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="/javascripts/filter.js"></script> -->
+
+</head>
+
+
+
+
+
+
+<div class="col-md-10">
+
+<h4>Listen to our random, awesome somewhat randomized music !!</h4>
+
+<br>
+<br>
+<hr>
+<br><br>
+
+<div>
+
+ <ul class="list-group list-group-flush songs">
+ <% var x = Math.floor(Math.random() * 18)
+
+ var i = 0;
+
+  results.forEach(function(song){
+
+  if(i==x){
+
+  %>
+                    <li class="list-group-item" aria-current="true"><%= song.title %>
+                    <button class="btn btn-outline-dark like"  onclick="likeFunction(this)">
+                       <audio controls src="/music/<%= song.title %>.mp3"  type="audio/mpeg"></audio>
+                        <i onclick="myFunction(this)" class="far fa-heart"></i>
+                    </button>
+                    </li>
+
+                    <%
+
+                    }i=i+1;}) ;%>
+                </ul>
+                </div>
+
+
+    </div>
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>

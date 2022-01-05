@@ -1,0 +1,38 @@
+<%- include ('partials/header') %>
+
+
+<div class="container">
+<h1> Edit movie </h1>
+
+
+<form action="/music/<%= music._id %>/edit" method="POST">
+
+<div class="form-group">
+    <input type="text" name="title" class="form-control" value="<%= music.title %>">
+</div>
+ <div class="form-group">
+    <input type="text" name="genre" class="form-control" value="<%= music.genre %>">
+</div>
+<div class="form-group">
+    <input type="text" name="image" class="form-control" value="<%= music.image %>">
+</div>
+ <div class="form-group">
+    <textarea name="desc" class="form-control" placeholder=""><%= music.description %></textarea>
+</div>
+<div class="form-group">
+    <button type="submit" class="btn btn-info">Update</button>
+</div>
+
+
+</form>
+
+<a href="/">Cancel</a>
+
+</div>
+
+
+
+
+
+
+<%- include ('partials/footer') %>
