@@ -154,39 +154,9 @@ router.post('/music/:id/edit',function(req,res){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = router;
 
 
 
 
 
-// <% resul.forEach(function(x){ %>
-//     <a class="dropdown-item" href="#">x</a>
-//   <% }); %>
-
-
-// <div class="dropdown">
-//   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-//     Choose Genre !
-//   </button>
-//   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-//   <% resul.forEach(function(x){ %>
-//     <a class="dropdown-item" href="#">x</a>
-//   <% }); %>
-//   </div>
-// </div>
-
-
-// <a href="/current/<%= id %>/anything"></a>
