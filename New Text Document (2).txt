@@ -1,2 +1,0 @@
-todos:
-chk if email already exisits
