@@ -1,5 +1,9 @@
 window.onload = function(){
 
+
+
+    // form validation for user registration and login
+    
     //there will be one span element for each input field
     // when the page is loaded, we create them and append them to corresponding input element 
 	// they are initially empty and hidden

@@ -1,3 +1,6 @@
+
+// make the api calls
+
 $(function(){
     $.ajax({
         method:"GET",
@@ -18,6 +21,7 @@ $(function(){
         }
     });
 
+// add a new song to database
 $("#add").click(function(){
 
     var vtitle=$("#title").val();

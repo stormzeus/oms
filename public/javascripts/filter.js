@@ -27,7 +27,7 @@ $.post( "./"+x, {title: x } );
     x.classList.toggle("fas");
   }
 
-
+// update song as dislike
 function dislike(song_name, id){
 
    $.post( "./liked_songs_page/dislike", {song:song_name , userid : id },function(){
@@ -36,7 +36,7 @@ function dislike(song_name, id){
 };
 
 
-
+// function to create a playlist
 function addPlay(id){
 
      var playlist = $("#addPlaylist").val();
@@ -49,6 +49,7 @@ function addPlay(id){
 
 }
 
+// function to add a liked song to playlist
 function addtoplaylist(playlist, id, songname){
 
         $.post( "./liked_songs_page/addtoplaylist", {id,playlist,songname},function(){

@@ -19,7 +19,7 @@ router.get('/',function(req,res){
 })
 
 
-
+// mark the current user through the id from the database
 async function get_user_name(id){
     const user=await users_collection.findOne({_id:id},function(err,user){
     })
@@ -27,6 +27,7 @@ async function get_user_name(id){
     return name
 }
 
+// check if the user is normal user or admin
 async function get_user_type(id){
     const user=await users_collection.findOne({_id:id},function(err,user){
     })
@@ -34,6 +35,7 @@ async function get_user_type(id){
     return type
 }
 
+// get the user's playlists from the database
 async function get_playlists(id){
     const name = await get_user_name(id);
 
@@ -109,7 +111,7 @@ async function get_selectors(){
 
 
 
-
+// perform song filtering based on a genre
 router.get('/:id/show_genre',async function(req,res){
     const id=req.params.id;
     const genre=req.query.genre;
@@ -150,6 +152,7 @@ router.get('/:id/show_genre',async function(req,res){
 
 
 
+// route to the page to display a random song
 router.get('/:id/anything',async function(req,res){
     const id=req.params.id;
     const genre=req.query.genre;
@@ -263,7 +266,7 @@ music_library.findOne({'user':id},function(err,library){
 
 
 
-
+// get a song from playlist
 router.get('/:id/playlists/:val', async function(req,res){
 
 
@@ -319,7 +322,7 @@ const type = await get_user_type(id);
 });
 
 
-
+// show all liked songs
 router.get('/:id/liked_songs_page',async function(req,res){
      const id=req.params.id;
     const name = await get_user_name(id);
@@ -352,7 +355,7 @@ res.render('liked_songs_page',{songs : liked_songs['liked_songs'],name,id, playl
 
 
 
-
+// change a song from liked to display
 router.post("/:id/liked_songs_page/dislike",async function(req,res){
     console.log("reached the right delete route");
     let id = req.body.userid;
@@ -376,7 +379,7 @@ router.post("/:id/liked_songs_page/dislike",async function(req,res){
 
 
 
-
+// remove a song from playlist
 router.post("/:id/playlists/playlist_songs/remove",async function(req,res){
 
   const id = req.params.id;
@@ -472,7 +475,7 @@ router.post("/:id/liked_songs_page/playlist",async function(req,res){
 
 });
 
-
+// add liked songs to playlist
 router.post("/:id/liked_songs_page/addtoplaylist",async function(req,res){
     console.log("reached the right route for adding a particular song to a playlist");
        let id = req.body.id;
@@ -514,7 +517,7 @@ router.post("/:id/liked_songs_page/addtoplaylist",async function(req,res){
 
 
 
-
+// perform admin functions
 router.get('/:id/admin_functions',async function(req,res){
 
     const id=req.params.id;
@@ -558,7 +561,7 @@ router.get('/:id/admin_functions',async function(req,res){
 
 
 
-
+// insert song
 router.post('/:id', async function(req,res){
 
 
@@ -611,7 +614,7 @@ else{
 
 
 
-
+// edit title of a song (admin privilege)
 router.post('/:id/edit/title',async function(req,res){
 
     var chosen_song=req.body.edit_song;
@@ -639,7 +642,7 @@ router.post('/:id/edit/title',async function(req,res){
 });
 
 
-
+// remove a specific song from the playlist
 router.post('/:id/playlist/removeplaylist',async function(req,res){
     const id=req.body.userid;
 
@@ -714,20 +717,6 @@ router.get('/:id/all_songs', async function(req,res){
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = router;
