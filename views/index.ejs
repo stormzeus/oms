@@ -16,7 +16,7 @@
   Add new song</a>
 
 
-
+	<!-- filter songs based on genre -->
   <form action="/music/search" method="GET" class="form-inline">
 	  <div class="form-group">
 	    <input type="text" name="search" id="search" placeholder="search" class="form-control">
@@ -35,20 +35,13 @@
 	</form>
 
 
-
-
-
-
-
-
-
 </div>
 
 
 
 <div class="container">
 
-
+<!-- display the songs with the name and thumbnail -->
 <div class="row">
 <% results.forEach(function(song){ %>
 	<div class="sm-col-3">

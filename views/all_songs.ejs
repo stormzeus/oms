@@ -25,6 +25,7 @@
 
  <ul class="list-group list-group-flush songs">
  <% let cnt=0;results.forEach(function(song){ console.log(cnt);
+  <!-- display only 7 songs per page -->
  if(cnt==7) return false; %>
                     <li class="list-group-item like" aria-current="true"><%= song.title %>
                     <button class="btn btn-outline-dark like " onclick="likeFunction(this)">
